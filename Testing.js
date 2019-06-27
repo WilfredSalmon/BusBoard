@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-var moment = require('moment');
 var request = require('request');
 var dealWithData_1 = require("./dealWithData");
 //const DealWData =  require('./dealWithData.ts')
