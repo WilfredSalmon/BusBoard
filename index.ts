@@ -1,16 +1,30 @@
-const request = require('request');
-const readline = require('readline-sync');
-import {DealWithData} from './dealWithData';
+import { PostCodeAPI } from './PostCodeAPI';
+import { BusAPI } from './BusAPI';
+import { StopPointsAPI } from './stopPointsAPI';
 
-const dealWithData = new DealWithData();
+const express = require('express');
+const app = express();
+const port = 3000;
 
-function getValidUrl() {
-    console.log('Please enter a valid bus code');
-    const input = readline.prompt();
-    return `https://api.tfl.gov.uk/StopPoint/${input}/Arrivals?app_id=a4469e0c&app_key=8747fa289b54c9ff251af0d53d7cc92f`;
-}
+const postCodeAPI = new PostCodeAPI;
+const busAPI = new BusAPI;
+const stopPointsAPI = new StopPointsAPI;
 
-request(getValidUrl(), (error, response, body) => {
-    const output = dealWithData.main(body);
-    console.log(output);
+
+app.get('/departureBoards/:postcode', (req,res) => {
+    postCodeAPI.getPostcodeObjectFromAPI(req.params.postcode)
+        .then(postCodeObject => stopPointsAPI.getTwoClosestStops(postCodeObject), (err) => {
+            throw err;
+        })
+        .then(twoClosestStops => Promise.all(twoClosestStops.map(stop => busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName))))
+        .then(busInfo => {
+            console.log(busInfo.join('\n =============================== \n'));
+            res.send( busInfo.join('\n =============================== \n'));
+        });
 });
+
+app.listen(port, () => console.log(`BusBoard listening on port ${port}!`));
+
+
+
+

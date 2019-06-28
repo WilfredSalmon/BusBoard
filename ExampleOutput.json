@@ -1,0 +1,292 @@
+{
+  "$type": "Tfl.Api.Presentation.Entities.StopPointsResponse, Tfl.Api.Presentation.Entities",
+  "centrePoint": [
+    51.371,
+    -0.003
+  ],
+  "stopPoints": [
+    {
+      "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+      "naptanId": "490003099N",
+      "indicator": "Stop C",
+      "stopLetter": "C",
+      "modes": [
+        "bus"
+      ],
+      "icsCode": "1003099",
+      "stopType": "NaptanPublicBusCoachTram",
+      "stationNaptan": "490G00003099",
+      "lines": [],
+      "lineGroup": [],
+      "lineModeGroups": [],
+      "status": true,
+      "id": "490003099N",
+      "commonName": "Addington Road / Glebe Way",
+      "distance": 72.054447999360349,
+      "placeType": "StopPoint",
+      "additionalProperties": [
+        {
+          "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+          "category": "Direction",
+          "key": "CompassPoint",
+          "sourceSystemKey": "Naptan490",
+          "value": "NE"
+        },
+        {
+          "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+          "category": "Direction",
+          "key": "Towards",
+          "sourceSystemKey": "CountDown",
+          "value": "Hayes"
+        }
+      ],
+      "children": [],
+      "lat": 51.370749,
+      "lon": -0.002044
+    },
+    {
+      "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+      "naptanId": "490003099W",
+      "indicator": "Stop L",
+      "stopLetter": "L",
+      "modes": [
+        "bus"
+      ],
+      "icsCode": "1003099",
+      "stopType": "NaptanPublicBusCoachTram",
+      "stationNaptan": "490G00003099",
+      "lines": [],
+      "lineGroup": [],
+      "lineModeGroups": [],
+      "status": true,
+      "id": "490003099W",
+      "commonName": "Addington Road / Glebe Way",
+      "distance": 77.344843269624988,
+      "placeType": "StopPoint",
+      "additionalProperties": [
+        {
+          "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+          "category": "Direction",
+          "key": "CompassPoint",
+          "sourceSystemKey": "Naptan490",
+          "value": "SW"
+        },
+        {
+          "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+          "category": "Direction",
+          "key": "Towards",
+          "sourceSystemKey": "CountDown",
+          "value": "Addington Village or Shirley"
+        }
+      ],
+      "children": [],
+      "lat": 51.370518,
+      "lon": -0.002198
+    },
+    {
+      "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+      "naptanId": "490G00003099",
+      "modes": [
+        "bus"
+      ],
+      "icsCode": "1003099",
+      "stopType": "NaptanOnstreetBusCoachStopPair",
+      "stationNaptan": "490G00003099",
+      "lines": [],
+      "lineGroup": [],
+      "lineModeGroups": [],
+      "status": true,
+      "id": "490G00003099",
+      "commonName": "Addington Road / Glebe Way",
+      "distance": 77.344843269624988,
+      "placeType": "StopPoint",
+      "additionalProperties": [],
+      "children": [
+        {
+          "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+          "naptanId": "490003099W",
+          "indicator": "Stop L",
+          "stopLetter": "L",
+          "modes": [
+            "bus"
+          ],
+          "icsCode": "1003099",
+          "stopType": "NaptanPublicBusCoachTram",
+          "stationNaptan": "490G00003099",
+          "lines": [],
+          "lineGroup": [],
+          "lineModeGroups": [],
+          "status": true,
+          "id": "490003099W",
+          "commonName": "Addington Road / Glebe Way",
+          "distance": 77.344843269624988,
+          "placeType": "StopPoint",
+          "additionalProperties": [
+            {
+              "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+              "category": "Direction",
+              "key": "CompassPoint",
+              "sourceSystemKey": "Naptan490",
+              "value": "SW"
+            },
+            {
+              "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+              "category": "Direction",
+              "key": "Towards",
+              "sourceSystemKey": "CountDown",
+              "value": "Addington Village or Shirley"
+            }
+          ],
+          "children": [],
+          "lat": 51.370518,
+          "lon": -0.002198
+        },
+        {
+          "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+          "naptanId": "490003099N",
+          "indicator": "Stop C",
+          "stopLetter": "C",
+          "modes": [
+            "bus"
+          ],
+          "icsCode": "1003099",
+          "stopType": "NaptanPublicBusCoachTram",
+          "stationNaptan": "490G00003099",
+          "lines": [],
+          "lineGroup": [],
+          "lineModeGroups": [],
+          "status": true,
+          "id": "490003099N",
+          "commonName": "Addington Road / Glebe Way",
+          "distance": 72.054447999360349,
+          "placeType": "StopPoint",
+          "additionalProperties": [
+            {
+              "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+              "category": "Direction",
+              "key": "CompassPoint",
+              "sourceSystemKey": "Naptan490",
+              "value": "NE"
+            },
+            {
+              "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+              "category": "Direction",
+              "key": "Towards",
+              "sourceSystemKey": "CountDown",
+              "value": "Hayes"
+            }
+          ],
+          "children": [],
+          "lat": 51.370749,
+          "lon": -0.002044
+        }
+      ],
+      "lat": 51.370518,
+      "lon": -0.002198
+    },
+    {
+      "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+      "naptanId": "490003097E",
+      "indicator": "Stop P",
+      "stopLetter": "P",
+      "modes": [
+        "bus"
+      ],
+      "icsCode": "1003097",
+      "stopType": "NaptanPublicBusCoachTram",
+      "stationNaptan": "490G00003097",
+      "lines": [],
+      "lineGroup": [],
+      "lineModeGroups": [],
+      "status": true,
+      "id": "490003097E",
+      "commonName": "Glebe Way",
+      "distance": 161.95642006191685,
+      "placeType": "StopPoint",
+      "additionalProperties": [
+        {
+          "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+          "category": "Direction",
+          "key": "CompassPoint",
+          "sourceSystemKey": "Naptan490",
+          "value": "E"
+        },
+        {
+          "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+          "category": "Direction",
+          "key": "Towards",
+          "sourceSystemKey": "CountDown",
+          "value": "Keston"
+        }
+      ],
+      "children": [],
+      "lat": 51.370986,
+      "lon": -0.000669
+    },
+    {
+      "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+      "naptanId": "490G00003097",
+      "modes": [
+        "bus"
+      ],
+      "icsCode": "1003097",
+      "stopType": "NaptanOnstreetBusCoachStopPair",
+      "stationNaptan": "490G00003097",
+      "lines": [],
+      "lineGroup": [],
+      "lineModeGroups": [],
+      "status": true,
+      "id": "490G00003097",
+      "commonName": "Glebe Way",
+      "distance": 161.95642006191685,
+      "placeType": "StopPoint",
+      "additionalProperties": [],
+      "children": [
+        {
+          "$type": "Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities",
+          "naptanId": "490003097E",
+          "indicator": "Stop P",
+          "stopLetter": "P",
+          "modes": [
+            "bus"
+          ],
+          "icsCode": "1003097",
+          "stopType": "NaptanPublicBusCoachTram",
+          "stationNaptan": "490G00003097",
+          "lines": [],
+          "lineGroup": [],
+          "lineModeGroups": [],
+          "status": true,
+          "id": "490003097E",
+          "commonName": "Glebe Way",
+          "distance": 161.95642006191685,
+          "placeType": "StopPoint",
+          "additionalProperties": [
+            {
+              "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+              "category": "Direction",
+              "key": "CompassPoint",
+              "sourceSystemKey": "Naptan490",
+              "value": "E"
+            },
+            {
+              "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
+              "category": "Direction",
+              "key": "Towards",
+              "sourceSystemKey": "CountDown",
+              "value": "Keston"
+            }
+          ],
+          "children": [],
+          "lat": 51.370986,
+          "lon": -0.000669
+        }
+      ],
+      "lat": 51.370986,
+      "lon": -0.000669
+    }
+  ],
+  "pageSize": 0,
+  "total": 0,
+  "page": 0
+}
