@@ -11,7 +11,7 @@ var BusAPI = /** @class */ (function () {
             return request("https://api.tfl.gov.uk/StopPoint/" + stopcode + "/Arrivals?app_id=a4469e0c&app_key=8747fa289b54c9ff251af0d53d7cc92f", function (error, response, body) { resolve(body); reject(error); });
         }).then(function (body) {
             var parsedBusArrivalInfo = _this.get2ClosestBusesInfoAsString(body);
-            return "Buses from " + stationName + "\n" + parsedBusArrivalInfo;
+            return "{ \"stationName\":  \"" + stationName + "\", \"buses\":[" + parsedBusArrivalInfo + "] }";
         }, function (err) {
             throw err;
         });
@@ -21,8 +21,8 @@ var BusAPI = /** @class */ (function () {
             return bus1.timeToStation - bus2.timeToStation;
         }).splice(0, 5);
         return parsedData.map(function (bus) {
-            return "The " + moment().add(bus.timeToStation, 's').format('HH:mm:ss') + " to " + bus.destinationName;
-        }).join('\n');
+            return "{\"timeOfArrival\": \"" + moment().add(bus.timeToStation, 's').format('HH:mm:ss') + "\", \"destination\": \"" + bus.destinationName + "\"}";
+        }).join(', ');
     };
     return BusAPI;
 }());

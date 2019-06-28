@@ -16,8 +16,7 @@ app.get('/departureBoards/:postcode', function (req, res) {
     })
         .then(function (twoClosestStops) { return Promise.all(twoClosestStops.map(function (stop) { return busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName); })); })
         .then(function (busInfo) {
-        console.log(busInfo.join('\n =============================== \n'));
-        res.send(busInfo.join('\n =============================== \n'));
+        res.send("[ " + busInfo.join(' , ') + "]");
     });
 });
 app.listen(port, function () { return console.log("BusBoard listening on port " + port + "!"); });

@@ -8,8 +8,8 @@ export class BusAPI {
             }
         ).then(body => {
             const parsedBusArrivalInfo = this.get2ClosestBusesInfoAsString(body as string);
-            return `Buses from ${stationName}\n${parsedBusArrivalInfo}`;
-        }, err => {
+            return `{ "stationName":  "${stationName}", "buses":[${parsedBusArrivalInfo}] }`;
+        },  err => {
             throw err;
         });
     }
@@ -20,7 +20,7 @@ export class BusAPI {
         }).splice(0, 5);
 
         return parsedData.map((bus) => {
-            return `The ${moment().add(bus.timeToStation, 's').format('HH:mm:ss')} to ${bus.destinationName}`;
-        }).join('\n');
+            return `{"timeOfArrival": "${moment().add(bus.timeToStation, 's').format('HH:mm:ss')}", "destination": "${bus.destinationName}"}`;
+        }).join(', ');
     }
 }

@@ -18,8 +18,7 @@ app.get('/departureBoards/:postcode', (req,res) => {
         })
         .then(twoClosestStops => Promise.all(twoClosestStops.map(stop => busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName))))
         .then(busInfo => {
-            console.log(busInfo.join('\n =============================== \n'));
-            res.send( busInfo.join('\n =============================== \n'));
+            res.send( `[ ${busInfo.join(' , ')}]`);
         });
 });
 

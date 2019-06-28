@@ -1,0 +1,52 @@
+[
+  {
+    "stationName": "Centre For Independent Living",
+    "buses": [
+      {
+        "timeOfArrival": "11:12:25",
+        "destination": "Moorgate, Finsbury Square"
+      },
+      {
+        "timeOfArrival": "11:16:01",
+        "destination": "Clapham Common"
+      },
+      {
+        "timeOfArrival": "11:21:30",
+        "destination": "Clapham Common"
+      },
+      {
+        "timeOfArrival": "11:26:16",
+        "destination": "Clapham Common"
+      },
+      {
+        "timeOfArrival": "11:30:59",
+        "destination": "Moorgate, Finsbury Square"
+      }
+    ]
+  },
+  {
+    "stationName": "Lady Somerset Road",
+    "buses": [
+      {
+        "timeOfArrival": "11:12:08",
+        "destination": "Highgate Village"
+      },
+      {
+        "timeOfArrival": "11:16:29",
+        "destination": "Parliament Hill Fields"
+      },
+      {
+        "timeOfArrival": "11:18:59",
+        "destination": "Highgate Village"
+      },
+      {
+        "timeOfArrival": "11:23:53",
+        "destination": "Highgate Village"
+      },
+      {
+        "timeOfArrival": "11:26:54",
+        "destination": "Highgate Village"
+      }
+    ]
+  }
+]
