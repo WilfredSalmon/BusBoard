@@ -1,6 +1,6 @@
-import { PostCodeAPI } from './PostCodeAPI';
-import { BusAPI } from './BusAPI';
-import { StopPointsAPI } from './stopPointsAPI';
+import {PostCodeAPI} from './PostCodeAPI';
+import {BusAPI} from './BusAPI';
+import {StopPointsAPI} from './stopPointsAPI';
 
 const express = require('express');
 const app = express();
@@ -10,15 +10,18 @@ const postCodeAPI = new PostCodeAPI;
 const busAPI = new BusAPI;
 const stopPointsAPI = new StopPointsAPI;
 
+// We disable this because intellij is confused
+// noinspection TypeScriptValidateJSTypes
 app.use(express.static('frontend'));
-app.get('/departureBoards/:postcode', (req,res) => {
-    postCodeAPI.getPostcodeObjectFromAPI(req.params.postcode)
+app.get('/departureBoards/:postcode', (request, response) => {
+    postCodeAPI.getPostcodeObjectFromAPI(request.params.postcode)
         .then(postCodeObject => stopPointsAPI.getTwoClosestStops(postCodeObject), (err) => {
             throw err;
-        }).catch( err => res.send('Invalid Postcode (make sure the postcode is in London') )
+        })
+        .catch(() => response.send('Invalid Postcode (make sure the postcode is in London'))
         .then(twoClosestStops => Promise.all(twoClosestStops.map(stop => busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName))))
         .then(busInfo => {
-            res.send( `[ ${busInfo.join(' , ')}]`);
+            response.send(`[ ${busInfo.toString()}]`);
         });
 });
 

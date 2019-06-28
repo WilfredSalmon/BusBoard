@@ -15,13 +15,20 @@ var BusAPI = /** @class */ (function () {
         });
     };
     BusAPI.prototype.get2ClosestBusesInfoAsString = function (rawData) {
+        var _this = this;
         var parsedData = JSON.parse(rawData).sort(function (bus1, bus2) {
             return bus1.timeToStation - bus2.timeToStation;
-        }).splice(0, 5);
+        }).splice(0, BusAPI.numberOfBuses);
         return parsedData.map(function (bus) {
-            return "{\"timeOfArrival\": \"" + moment().add(bus.timeToStation, 's').format('HH:mm:ss') + "\", \"destination\": \"" + bus.destinationName + "\", \"lineNumber\": \"" + bus.lineName + "\"}";
+            return _this.getBusResponse(bus);
         }).join(', ');
     };
+    BusAPI.prototype.getBusResponse = function (bus) {
+        var timeOfArrival = moment().add(bus.timeToStation, 's').format(BusAPI.timeOfArrivalFormat);
+        return "{\"timeOfArrival\": \"" + timeOfArrival + "\", \"destination\": \"" + bus.destinationName + "\", \"lineNumber\": \"" + bus.lineName + "\"}";
+    };
+    BusAPI.numberOfBuses = 5;
+    BusAPI.timeOfArrivalFormat = 'HH:mm:ss';
     return BusAPI;
 }());
 exports.BusAPI = BusAPI;

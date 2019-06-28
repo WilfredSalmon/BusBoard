@@ -2,6 +2,9 @@ const request = require('request');
 const moment = require('moment');
 
 export class BusAPI {
+    private static readonly numberOfBuses = 5;
+    private static readonly timeOfArrivalFormat = 'HH:mm:ss';
+
     getBusInfoFromStopcode(stopcode: string, stationName: string): Promise<string> {
         return new Promise(resolve => {
                 return request(`https://api.tfl.gov.uk/StopPoint/${stopcode}/Arrivals?app_id=a4469e0c&app_key=8747fa289b54c9ff251af0d53d7cc92f`, (error, response, body) => resolve(body))
@@ -9,18 +12,24 @@ export class BusAPI {
         ).then(body => {
                 const parsedBusArrivalInfo = this.get2ClosestBusesInfoAsString(body as string);
                 return `{ "stationName":  "${stationName}", "buses":[${parsedBusArrivalInfo}] }`;
-
             }
         )
     }
 
     get2ClosestBusesInfoAsString(rawData: string): string {
+
         const parsedData = JSON.parse(rawData).sort((bus1, bus2) => {
             return bus1.timeToStation - bus2.timeToStation
-        }).splice(0, 5);
+        }).splice(0, BusAPI.numberOfBuses);
 
         return parsedData.map((bus) => {
-            return `{"timeOfArrival": "${moment().add(bus.timeToStation, 's').format('HH:mm:ss')}", "destination": "${bus.destinationName}", "lineNumber": "${bus.lineName}"}`;
+            return this.getBusResponse(bus);
         }).join(', ');
+    }
+
+    private getBusResponse(bus) {
+
+        let timeOfArrival = moment().add(bus.timeToStation, 's').format(BusAPI.timeOfArrivalFormat);
+        return `{"timeOfArrival": "${timeOfArrival}", "destination": "${bus.destinationName}", "lineNumber": "${bus.lineName}"}`;
     }
 }
