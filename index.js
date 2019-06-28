@@ -13,7 +13,7 @@ app.get('/departureBoards/:postcode', function (req, res) {
     postCodeAPI.getPostcodeObjectFromAPI(req.params.postcode)
         .then(function (postCodeObject) { return stopPointsAPI.getTwoClosestStops(postCodeObject); }, function (err) {
         throw err;
-    })
+    })["catch"](function (err) { return res.send('Invalid Postcode'); })
         .then(function (twoClosestStops) { return Promise.all(twoClosestStops.map(function (stop) { return busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName); })); })
         .then(function (busInfo) {
         res.send("[ " + busInfo.join(' , ') + "]");

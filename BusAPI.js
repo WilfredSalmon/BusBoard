@@ -7,13 +7,11 @@ var BusAPI = /** @class */ (function () {
     }
     BusAPI.prototype.getBusInfoFromStopcode = function (stopcode, stationName) {
         var _this = this;
-        return new Promise(function (resolve, reject) {
-            return request("https://api.tfl.gov.uk/StopPoint/" + stopcode + "/Arrivals?app_id=a4469e0c&app_key=8747fa289b54c9ff251af0d53d7cc92f", function (error, response, body) { resolve(body); reject(error); });
+        return new Promise(function (resolve) {
+            return request("https://api.tfl.gov.uk/StopPoint/" + stopcode + "/Arrivals?app_id=a4469e0c&app_key=8747fa289b54c9ff251af0d53d7cc92f", function (error, response, body) { return resolve(body); });
         }).then(function (body) {
             var parsedBusArrivalInfo = _this.get2ClosestBusesInfoAsString(body);
             return "{ \"stationName\":  \"" + stationName + "\", \"buses\":[" + parsedBusArrivalInfo + "] }";
-        }, function (err) {
-            throw err;
         });
     };
     BusAPI.prototype.get2ClosestBusesInfoAsString = function (rawData) {
