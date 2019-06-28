@@ -20,7 +20,7 @@ export class BusAPI {
         }).splice(0, 5);
 
         return parsedData.map((bus) => {
-            return `{"timeOfArrival": "${moment().add(bus.timeToStation, 's').format('HH:mm:ss')}", "destination": "${bus.destinationName}"}`;
+            return `{"timeOfArrival": "${moment().add(bus.timeToStation, 's').format('HH:mm:ss')}", "destination": "${bus.destinationName}", "lineNumber": "${bus.lineName}"}`;
         }).join(', ');
     }
 }

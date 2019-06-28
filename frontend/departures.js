@@ -1,7 +1,17 @@
+function getHtmlFromBusInfo(busInfo) {
+    return "<h2>Results</h2>" + busInfo.map(function(stop) {
+
+        return "<h3>From " + stop.stationName + "</h3><ul>" + stop.buses.map( function(bus) {
+            return "\t<li>" + bus.timeOfArrival + ", " + bus.lineNumber + " to "+ bus.destination +"</li>";
+        }).join("<br>") + "<br></ul>";
+
+
+    }).join("");
+}
+
 function main() {
 
     var postcode = document.getElementById("postcode").value;
-    console.log('http://localhost:3000/departureBoards/'+postcode);
 
     var xhttp = new XMLHttpRequest();
 
@@ -10,21 +20,16 @@ function main() {
     xhttp.setRequestHeader('Content-Type', 'application/json');
 
     xhttp.onload = function() {
+
+        if (xhttp.responseText === 'Invalid Postcode (make sure the postcode is in London') {
+            document.getElementById('results').innerHTML = '<h2>Invalid Postcode (make sure the postcode is in London)</h2>'
+        } else {
+
         var busInfo = JSON.parse(xhttp.responseText);
 
-        document.getElementById('results').innterHTML =
-            '<h2>Results</h2>' +
-            '<h3>Examples stop 1</h3>'+
-            '<ul>'+
-            '<li>2 minutes: 123 to Example Street</li>'+
-            '<li>3 minutes: 456 to Fantasy Land</li>'+
-            '</ul>'+
-            '<h3>Examples stop 2</h3>'+
-            '<ul>'+
-            '<li>1 minute: 123 to Example Street</li>'+
-            '<li>4 minutes: 456 to Fantasy Land</li>'+
-            '</ul>'
-        console.log(xhttp.responseText)
+        document.getElementById('results').innerHTML = getHtmlFromBusInfo(busInfo);}
+
+        console.log(xhttp.responseText);
     };
 
     xhttp.send();

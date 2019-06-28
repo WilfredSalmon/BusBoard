@@ -19,7 +19,7 @@ var BusAPI = /** @class */ (function () {
             return bus1.timeToStation - bus2.timeToStation;
         }).splice(0, 5);
         return parsedData.map(function (bus) {
-            return "{\"timeOfArrival\": \"" + moment().add(bus.timeToStation, 's').format('HH:mm:ss') + "\", \"destination\": \"" + bus.destinationName + "\"}";
+            return "{\"timeOfArrival\": \"" + moment().add(bus.timeToStation, 's').format('HH:mm:ss') + "\", \"destination\": \"" + bus.destinationName + "\", \"lineNumber\": \"" + bus.lineName + "\"}";
         }).join(', ');
     };
     return BusAPI;
