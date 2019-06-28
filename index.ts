@@ -15,7 +15,7 @@ app.get('/departureBoards/:postcode', (req,res) => {
     postCodeAPI.getPostcodeObjectFromAPI(req.params.postcode)
         .then(postCodeObject => stopPointsAPI.getTwoClosestStops(postCodeObject), (err) => {
             throw err;
-        }).catch( err => res.send('Invalid Postcode') )
+        }).catch( err => res.send('Invalid Postcode (make sure the postcode is in London') )
         .then(twoClosestStops => Promise.all(twoClosestStops.map(stop => busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName))))
         .then(busInfo => {
             res.send( `[ ${busInfo.join(' , ')}]`);
