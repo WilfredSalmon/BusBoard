@@ -9,11 +9,12 @@ var port = 3000;
 var postCodeAPI = new PostCodeAPI_1.PostCodeAPI;
 var busAPI = new BusAPI_1.BusAPI;
 var stopPointsAPI = new stopPointsAPI_1.StopPointsAPI;
+app.use(express.static('frontend'));
 app.get('/departureBoards/:postcode', function (req, res) {
     postCodeAPI.getPostcodeObjectFromAPI(req.params.postcode)
         .then(function (postCodeObject) { return stopPointsAPI.getTwoClosestStops(postCodeObject); }, function (err) {
         throw err;
-    })["catch"](function (err) { return res.send('Invalid Postcode'); })
+    })["catch"](function (err) { return res.send('Invalid Postcode (make sure the postcode is in London'); })
         .then(function (twoClosestStops) { return Promise.all(twoClosestStops.map(function (stop) { return busAPI.getBusInfoFromStopcode(stop.naptanId, stop.commonName); })); })
         .then(function (busInfo) {
         res.send("[ " + busInfo.join(' , ') + "]");

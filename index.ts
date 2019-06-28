@@ -10,7 +10,7 @@ const postCodeAPI = new PostCodeAPI;
 const busAPI = new BusAPI;
 const stopPointsAPI = new StopPointsAPI;
 
-
+app.use(express.static('frontend'));
 app.get('/departureBoards/:postcode', (req,res) => {
     postCodeAPI.getPostcodeObjectFromAPI(req.params.postcode)
         .then(postCodeObject => stopPointsAPI.getTwoClosestStops(postCodeObject), (err) => {
