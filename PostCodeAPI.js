@@ -14,10 +14,6 @@ var PostCodeAPI = /** @class */ (function () {
             });
         });
     };
-    PostCodeAPI.prototype.getPostcode = function () {
-        console.log('Please enter a valid postcode: ');
-        return readline.prompt();
-    };
     return PostCodeAPI;
 }());
 exports.PostCodeAPI = PostCodeAPI;

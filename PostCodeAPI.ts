@@ -12,10 +12,10 @@ export class PostCodeAPI {
         });
     }
 
-    getPostcode(): string {
-        console.log('Please enter a valid postcode: ');
-        return readline.prompt();
-    }
+    // getPostcode(): string {
+    //     console.log('Please enter a valid postcode: ');
+    //     return readline.prompt();
+    // }
 }
 
 export interface PostcodeResponse {

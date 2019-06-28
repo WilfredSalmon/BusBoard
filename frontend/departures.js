@@ -1,7 +1,7 @@
 function getHtmlFromBusInfo(busInfo) {
     return "<h2>Results</h2>" + busInfo.map(function(stop) {
 
-        return "<h3>From " + stop.stationName + "</h3><ul>" + stop.buses.map( function(bus) {
+        return "<h3>From <a href = 'http://localhost:3000/stopInfo?stopPoint=" + stop.stopCode +"&stopName=" +stop.stationName + "'>" + stop.stationName + "</a></h3><ul>" + stop.buses.map( function(bus) {
             return "<li>" + bus.timeOfArrival + ", " + bus.lineNumber + " to "+ bus.destination +"</li>";
         }).join("<br>") + "<br></ul>";
 
@@ -18,7 +18,7 @@ function main() {
     var xhttp = new XMLHttpRequest();
 
     var departureBoardsBaseUrl = 'http://localhost:3000/departureBoards/';
-    xhttp.open('GET', departureBoardsBaseUrl + postcode, true);
+    xhttp.open('GET', departureBoardsBaseUrl + postcode +'&5', true);
 
     xhttp.setRequestHeader('Content-Type', 'application/json');
 
